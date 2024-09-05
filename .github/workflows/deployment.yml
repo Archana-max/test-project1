@@ -14,12 +14,20 @@ jobs:
     needs: linting
     runs-on: macos-latest
     steps:
+      - name: Checkout Project
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
       - name: Run test 
         run: npm run test
   Deployment:
     needs: testing
     runs-on: macos-latest
     steps:
+      - name: Checkout Project
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
       - name: Build Project
         run: npm run build 
       - name: Deploy
