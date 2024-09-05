@@ -1,0 +1,9 @@
+name: Github configuration
+on: issues
+jobs: 
+  context:
+    runs-on: macos-latest
+    steps:
+      - name: Get github context
+        run: echo '${{toJSON(github.event)}}'
+
