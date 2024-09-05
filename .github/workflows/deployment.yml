@@ -11,13 +11,13 @@ jobs:
       - name: Run Linting 
         run: npm run lint
   testing:
-    needs: [linting]
+    needs: linting
     runs-on: macos-latest
     steps:
       - name: Run test 
         run: npm run test
   Deployment:
-    needs: [testing]
+    needs: testing
     runs-on: macos-latest
     steps:
       - name: Build Project
