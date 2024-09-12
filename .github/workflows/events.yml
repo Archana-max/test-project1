@@ -1,15 +1,15 @@
 name: Events Demo
-on: 
-  pull_request:
-    types: [opened,edited]
-  push:
-    branches:
-      - main
-      - 'dev-*' #dev-new
-      - 'feat/**' #feat/new feat/new/button
+on: workflow_dispatch
+  # pull_request:
+  #   types: [opened,edited]
+  # push:
+  #   branches:
+  #     - main
+  #     - 'dev-*' #dev-new
+  #     - 'feat/**' #feat/new feat/new/button
       #developer-1
-    paths-ignore:
-      - '.github/workflow/*'
+    # paths-ignore:
+    #   - '.github/workflow/*'
 jobs:
   deploy:
     runs-on: macos-latest
