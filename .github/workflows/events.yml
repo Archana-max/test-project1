@@ -1,0 +1,30 @@
+name: Events Demo
+on: 
+  pull_request:
+    types: [opened,edited]
+  push:
+    branches:
+      - main
+      - 'dev-*' #dev-new
+      - 'feat/**' #feat/new feat/new/button
+      #developer-1
+    paths-ignore:
+      - '.github/workflow/*'
+jobs:
+  deploy:
+    runs-on: macos-latest
+    steps:
+      - name: Output event data 
+        uses: echo "${{ toJSON(github.event)}}"
+      - name: Checkout Project
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Linting 
+        run: npm run lint
+      - name: Test code 
+        run: npm run test
+      - name: Build code
+        run: npm run build
+      - name: Deploy Project
+        run: echo "Deploying...""
