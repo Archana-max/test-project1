@@ -18,4 +18,4 @@ jobs:
     - name: Build Project
       run: npm run build
     - name: Deploy project
-      uses: './.github/workflows/reuse.yml'
+      uses: ./.github/workflows/reuse.yml
