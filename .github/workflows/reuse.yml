@@ -1,8 +1,17 @@
 name: Reuse Workflow
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: Artifact name
+        default:
+        required: false
+        type: string
 jobs:
   build:
     runs-on: macos-latest
     steps:
       - name: Deploy Project
-        run: echo "Deploying the project...."
+        run: |
+          echo the artifact name is ${{inputs.artifact-name}}
+          ls
