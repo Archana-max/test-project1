@@ -57,6 +57,9 @@ jobs:
           path: dist
       - name: Output dist-files
         run: ls
+  pass-to-workflow:
+    needs: build
+    uses: ./.github/workflows/reuse.yml
   deploy:
     needs: build
     runs-on: macos-latest
@@ -66,8 +69,6 @@ jobs:
         with:
           name: dist-files
       - name: Output filename
-        uses: ./.github/workflows/reuse.yml
-        with:
-          artifact-name: echo ${{needs.build.outputs.script-file}}
+        run: echo ${{needs.build.outputs.script-file}}
       - name: Deploy
         run: echo 'Deploying the project....'
