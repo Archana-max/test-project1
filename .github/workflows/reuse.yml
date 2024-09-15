@@ -12,7 +12,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Download artifact
-        run: actions/download-artifact@v3
+        uses: actions/download-artifact@v3
         with:
           name: ${{inputs.artifact-name}}
       - name: Display files
