@@ -11,7 +11,9 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - name: Deploy Project
+      - name: Download artifact
+        run: actions/download-artifact@v3
+        with: ${{inputs.artifact-name}}
+      - name: Display files
         run: |
-          echo the artifact name is ${{inputs.artifact-name}}
           ls
