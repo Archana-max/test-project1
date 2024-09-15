@@ -13,7 +13,8 @@ jobs:
     steps:
       - name: Download artifact
         run: actions/download-artifact@v3
-        with: ${{inputs.artifact-name}}
+        with:
+          name: ${{inputs.artifact-name}}
       - name: Display files
         run: |
           ls
