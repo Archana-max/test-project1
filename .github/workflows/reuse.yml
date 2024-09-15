@@ -7,8 +7,13 @@ on:
         default:
         required: false
         type: string
+    outputs:
+      result:
+        value: ${{jobs.build.outputs.outcome}}
 jobs:
   build:
+    outputs:
+      outcome: ${{steps.set-result.outputs.step-result}}
     runs-on: macos-latest
     steps:
       - name: Download artifact
@@ -18,3 +23,6 @@ jobs:
       - name: Display files
         run: |
           ls
+      - name: Set result outputs
+        id: set-result
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
